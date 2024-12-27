@@ -44,4 +44,9 @@ public class UserController {
     public ResponseEntity<ReqRes> getAllUsers(){
         return ResponseEntity.ok(usersManagementService.getAllUsers());
     }
+
+    @GetMapping("/user/{id}")
+    public  ResponseEntity<ReqRes> getUserById(@PathVariable("id") long userId){
+        return ResponseEntity.ok(usersManagementService.getUserById(userId));
+    }
 }

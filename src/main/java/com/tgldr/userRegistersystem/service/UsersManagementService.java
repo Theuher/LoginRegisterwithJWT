@@ -83,7 +83,7 @@ public class UsersManagementService {
         ReqRes response = new ReqRes();
         try {
             List<User> usersList = usersRepo.findAll();
-            if (!usersList .isEmpty()){
+            if (!usersList.isEmpty()){
                 response.setUsersList(usersList);
                 response.setStatusCode(200);
                 response.setMessage("Амжилттай");
@@ -124,4 +124,20 @@ public class UsersManagementService {
             return response;
         }
     }
+
+    public ReqRes getUserById(long id){
+        ReqRes response = new ReqRes();
+        try {
+            User user = usersRepo.findById(id).orElseThrow();
+            response.setUser(user);
+            response.setStatusCode(200);
+            response.setMessage("Хэрэглэгч олдлоо");
+            return response;
+        }catch (Exception exception){
+            response.setStatusCode(500);
+//            response.setMessage("Хэрэглэгч хайхад алдаа гарлаа");
+            response.setMessage(exception.getMessage());
+        }
+        return response;
+    };
 }

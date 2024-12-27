@@ -34,8 +34,6 @@ public class JWTUtils {
                 .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(secretKey)
                 .compact();
-
-//        System.out.println("Generated JWT: " + token);
         return token;
     }
 
